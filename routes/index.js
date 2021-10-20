@@ -13,7 +13,7 @@ const API_KEY_VALUE = process.env.API_KEY_VALUE;
 // Init cache
 const cache = apicache.middleware;
 
-router.get("/", cache("2 minutes"), async (req, res) => {
+router.get("/", cache("2 minutes"), async (req, res, next) => {
   try {
     // console.log(url.parse(req.url, true).query);
 
@@ -33,7 +33,8 @@ router.get("/", cache("2 minutes"), async (req, res) => {
     res.status(200).json(data);
   } catch (error) {
     // console.log(error);
-    res.status(500).json({ error: error.message });
+    // res.status(500).json({ error: error.message });
+    next(error);
   }
 });
 

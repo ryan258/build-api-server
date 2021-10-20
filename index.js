@@ -18,6 +18,9 @@ app.use(limiter);
 // and since we're using this as a proxy
 app.set("trust proxy", 1);
 
+// Set statis folder
+app.use(express.static("public"));
+
 // Routes
 app.use("/api", require("./routes"));
 

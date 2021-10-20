@@ -4,8 +4,7 @@ const cityInput = document.querySelector("#city-input");
 
 // Fetch weather data from API
 const fetchWeather = async (city) => {
-  const apiKey = `9e77435b3bf4387ae1982a5327aa53e3`;
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+  const url = `/api?q=${city}`;
 
   const res = await fetch(url);
   const data = await res.json();
@@ -42,7 +41,7 @@ const kelvinToFahrenheit = (temp) => {
 weatherForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  if (cityInput.value === "") {
+  if (cityInput.value === ``) {
     alert("Please enter a city");
   } else {
     fetchWeather(cityInput.value);
